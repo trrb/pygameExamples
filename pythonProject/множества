@@ -1,0 +1,33 @@
+def choose_coffee(*arge):
+    for cofe in arge:
+        if cofe == "Эспрессо" and ingredients[0] >= 1:
+            ingredients[0] -= 1
+            return "Эспрессо"
+        elif cofe == "Латте Маккиато" and ingredients[0] >= 1 and ingredients[1] >= 2 and ingredients[2] >= 1:
+            ingredients[0] -= 1
+            ingredients[1] -= 2
+            ingredients[2] -= 1
+            return "Латте Маккиато"
+        elif cofe == "Кон Панна" and ingredients[0] >= 1 and ingredients[2] >= 1:
+            ingredients[0] -= 1
+            ingredients[2] -= 1
+            return "Кон Панна"
+        elif cofe == "Кофе по-венски" and ingredients[0] >= 1 and ingredients[2] >= 2:
+            ingredients[0] -= 1
+            ingredients[2] -= 2
+            return "Кофе по-венски"
+        elif cofe == "Капучино" and ingredients[0] >= 1 and ingredients[1] >= 3:
+            ingredients[0] -= 1
+            ingredients[1] -= 3
+            return "Капучино"
+        elif cofe == "Маккиато" and ingredients[0] >= 2 and ingredients[1] >= 1:
+            ingredients[0] -= 2
+            ingredients[1] -= 1
+            return "Маккиато"
+    else:
+        return "К сожалению, не можем предложить Вам напиток"
+
+
+ingredients = [3, 2, 1]
+print(choose_coffee("Кон Панна", "Кофе по-венски", "Латте Маккиато", "Эспрессо"))
+print(choose_coffee("Кон Панна", "Кофе по-венски", "Латте Маккиато", "Эспрессо"))

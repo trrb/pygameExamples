@@ -1,0 +1,7 @@
+n = int(input())
+count = 0
+for i in range(n):
+    pq = input().split()
+    if int(pq[-1]) - int(pq[0]) >= 2:
+        count += 1
+print(count)

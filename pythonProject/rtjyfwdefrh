@@ -1,0 +1,14 @@
+def matrix(n=1, m=0, a=0):
+    for_return_matrix = []
+    if m == 0:
+        m = n
+    for i in range(n):
+        for_return_matrix.append([])
+        for j in range(m):
+            for_return_matrix[i].append(a)
+    return for_return_matrix
+
+
+rows = matrix()
+for row in rows:
+    print(*row)
