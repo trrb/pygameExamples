@@ -1,6 +1,0 @@
-from pptx import Presentation
-
-prs = Presentation('test.pptx')
-
-slide = prs.slides[0]
-print(slide.placeholders[0].text)
