@@ -9,6 +9,7 @@ menu = True
 run_menu = True
 start = False
 stop_menu = False
+win = False
 size = width, height = 900, 700
 fps = 60
 platform_speed = 10
@@ -125,8 +126,10 @@ if __name__ == '__main__':
                 hits_rect = defence_all.pop(hits)
                 count_dead_blocks += 1
                 hit_color = defence_color.pop(hits)
-                ball_speed += 0.3
+                ball_speed += 0.2
                 dx, dy = balldetect(dx, dy, ball, hits_rect)
+                if len(defence_all) == 0:
+                    win = True
             if ball.y >= height + ball_radius:
                 stop_menu = True
             for event in pygame.event.get():
@@ -145,6 +148,33 @@ if __name__ == '__main__':
                               "Для новой попытки перезапусти систему взлома."]
                 background_1 = pygame.image.load('data/watch.jpg').convert()
                 while stop_menu:
+                    screen.blit(background_1, (-500, -100))
+                    font = pygame.font.Font(None, 30)
+                    text_coord = 50
+                    for line in intro_text:
+                        string_rendered = font.render(line, 1,
+                                                      pygame.Color('white'))
+                        intro_rect = string_rendered.get_rect()
+                        text_coord += 10
+                        intro_rect.top = text_coord
+                        intro_rect.x = 10
+                        text_coord += intro_rect.height
+                        screen.blit(string_rendered, intro_rect)
+                    for event in pygame.event.get():
+                        if event.type == pygame.QUIT:
+                            quit_game()
+                        elif event.type == pygame.MOUSEBUTTONDOWN:
+                            stop_menu = False
+                            break
+                    pygame.display.flip()
+                    clock.tick(10)
+            if len(defence_all) == 0:
+                intro_text = ["ПОБЕДА", "",
+                              "ЗАЩИТА РАЗБИТА",
+                              f"Уничтоженных блоков защиты: {count_dead_blocks}.",
+                              "Система взломанна, данные получины."]
+                background_1 = pygame.image.load('data/watch.jpg').convert()
+                while win:
                     screen.blit(background_1, (-500, -100))
                     font = pygame.font.Font(None, 30)
                     text_coord = 50
